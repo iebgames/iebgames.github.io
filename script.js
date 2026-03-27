@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounterAnimation();
     initBackToTop();
     initActiveNavLink();
+    initAdToggle();
 });
 
 // ========================================
@@ -313,3 +314,62 @@ document.querySelectorAll('.product-card').forEach(card => {
         card.style.transform = '';
     });
 });
+
+// ========================================
+// Ad Toggle Switch
+// ========================================
+function initAdToggle() {
+    const adSwitch = document.getElementById('ad-switch-input');
+    const adSlots = document.querySelectorAll('.ad-slot');
+    if (!adSwitch || !adSlots.length) return;
+
+    // Check localStorage for saved preference
+    const savedPref = localStorage.getItem('ieb-ads-enabled');
+    if (savedPref === 'true') {
+        adSwitch.checked = true;
+        showAds(adSlots);
+    }
+
+    adSwitch.addEventListener('change', () => {
+        if (adSwitch.checked) {
+            showAds(adSlots);
+            localStorage.setItem('ieb-ads-enabled', 'true');
+        } else {
+            hideAds(adSlots);
+            localStorage.setItem('ieb-ads-enabled', 'false');
+        }
+    });
+}
+
+function showAds(adSlots) {
+    adSlots.forEach((slot, index) => {
+        setTimeout(() => {
+            slot.style.display = 'block';
+            // Small delay for the CSS transition to work
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    slot.classList.add('ad-visible');
+                });
+            });
+            // Push adsbygoogle if available
+            try {
+                const insElement = slot.querySelector('.adsbygoogle');
+                if (insElement && !insElement.getAttribute('data-ad-loaded')) {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    insElement.setAttribute('data-ad-loaded', 'true');
+                }
+            } catch (e) {
+                // AdSense not loaded or blocked
+            }
+        }, index * 150);
+    });
+}
+
+function hideAds(adSlots) {
+    adSlots.forEach((slot) => {
+        slot.classList.remove('ad-visible');
+        setTimeout(() => {
+            slot.style.display = 'none';
+        }, 500); // Wait for fade-out transition
+    });
+}

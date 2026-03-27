@@ -28,6 +28,7 @@
     --gradient-card-qr: linear-gradient(135deg, #EC4899, #F43F5E);
     --gradient-card-pdf: linear-gradient(135deg, #EF4444, #DC2626);
     --gradient-card-antivirus: linear-gradient(135deg, #10B981, #059669);
+    --gradient-card-gd: linear-gradient(135deg, #2AF598, #009EFD);
 
     --border-color: #ffffff0d;
     --border-hover: #ffffff1a;
@@ -687,6 +688,14 @@ img {
     box-shadow: 0 8px 40px rgba(16, 185, 129, 0.15);
 }
 
+.product-card[data-product="gd"] .card-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(42, 245, 152, 0.06) 0%, transparent 50%);
+}
+
+.product-card[data-product="gd"]:hover {
+    box-shadow: 0 8px 40px rgba(42, 245, 152, 0.15);
+}
+
 .product-icon {
     width: 56px;
     height: 56px;
@@ -732,6 +741,10 @@ img {
 
 .product-card[data-product="antivirus"] .product-icon {
     background: var(--gradient-card-antivirus);
+}
+
+.product-card[data-product="gd"] .product-icon {
+    background: var(--gradient-card-gd);
 }
 
 .product-icon svg {
@@ -796,6 +809,11 @@ img {
 .product-card[data-product="ai"] .product-btn:hover {
     background: rgba(139, 92, 246, 0.15);
     border-color: rgba(139, 92, 246, 0.3);
+}
+
+.product-card[data-product="gd"] .product-btn:hover {
+    background: rgba(42, 245, 152, 0.15);
+    border-color: rgba(42, 245, 152, 0.3);
 }
 
 .product-card[data-product="chat"] .product-btn:hover {
@@ -1673,5 +1691,183 @@ img {
 
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   Ad Toggle Bar
+   ======================================== */
+.ad-toggle-bar {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: rgba(10, 10, 15, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 0;
+    transition: all var(--transition-normal);
+    opacity: 0;
+    animation: fadeInDown 0.5s ease 0.8s forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ad-toggle-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.ad-toggle-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.01em;
+    user-select: none;
+}
+
+/* iOS-style Toggle Switch */
+.ad-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.ad-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ad-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 26px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ad-slider::before {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background: var(--text-secondary);
+    border-radius: 50%;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.ad-switch input:checked+.ad-slider {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 68, 68, 0.2));
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
+}
+
+.ad-switch input:checked+.ad-slider::before {
+    transform: translateX(22px);
+    background: var(--accent-yellow);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.ad-switch:hover .ad-slider {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   Ad Containers
+   ======================================== */
+.ad-container {
+    position: relative;
+    z-index: 1;
+    padding: 24px 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.ad-container.ad-visible {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ad-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.ad-container .ad-label {
+    position: absolute;
+    top: 4px;
+    right: 30px;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Responsive ad toggle */
+@media (max-width: 768px) {
+    .ad-toggle-bar {
+        padding: 6px 0;
+    }
+
+    .ad-toggle-text {
+        font-size: 0.78rem;
+    }
+
+    .ad-switch {
+        width: 42px;
+        height: 24px;
+    }
+
+    .ad-slider::before {
+        height: 18px;
+        width: 18px;
+    }
+
+    .ad-switch input:checked+.ad-slider::before {
+        transform: translateX(18px);
+    }
+
+    .ad-wrapper {
+        min-height: 60px;
     }
 }
