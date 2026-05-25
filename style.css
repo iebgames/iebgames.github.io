@@ -29,6 +29,7 @@
     --gradient-card-pdf: linear-gradient(135deg, #EF4444, #DC2626);
     --gradient-card-antivirus: linear-gradient(135deg, #10B981, #059669);
     --gradient-card-gd: linear-gradient(135deg, #2AF598, #009EFD);
+    --gradient-card-helper: linear-gradient(135deg, #A855F7, #FFD700);
 
     --border-color: #ffffff0d;
     --border-hover: #ffffff1a;
@@ -696,6 +697,14 @@ img {
     box-shadow: 0 8px 40px rgba(42, 245, 152, 0.15);
 }
 
+.product-card[data-product="helper"] .card-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
+}
+
+.product-card[data-product="helper"]:hover {
+    box-shadow: 0 8px 40px rgba(168, 85, 247, 0.15);
+}
+
 .product-icon {
     width: 56px;
     height: 56px;
@@ -745,6 +754,10 @@ img {
 
 .product-card[data-product="gd"] .product-icon {
     background: var(--gradient-card-gd);
+}
+
+.product-card[data-product="helper"] .product-icon {
+    background: var(--gradient-card-helper);
 }
 
 .product-icon svg {
@@ -849,6 +862,11 @@ img {
 .product-card[data-product="antivirus"] .product-btn:hover {
     background: rgba(16, 185, 129, 0.15);
     border-color: rgba(16, 185, 129, 0.3);
+}
+
+.product-card[data-product="helper"] .product-btn:hover {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: rgba(168, 85, 247, 0.3);
 }
 
 /* ========================================
