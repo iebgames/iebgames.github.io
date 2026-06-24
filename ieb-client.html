@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEB Client - Minecraft Forge Utility Mod | IEB Games</title>
+    <meta name="description" content="IEB Client is a professional open-source utility mod for Minecraft 1.8.9 Forge with 160+ modules, custom HUD elements, and script engines.">
+    <link rel="icon" type="image/png" href="lg1.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-page {
+            padding: 140px 0 80px 0;
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        .product-hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .product-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+        .product-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 6px 14px;
+            border-radius: var(--radius-xl);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .product-main-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .product-sidebar-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            height: fit-content;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .product-main-card h2, .product-sidebar-card h3 {
+            color: var(--accent-yellow);
+            margin-top: 30px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .product-main-card h2:first-of-type {
+            margin-top: 0;
+        }
+        .product-main-card p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .spec-list {
+            margin-bottom: 20px;
+        }
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+        .spec-item span:first-child {
+            color: var(--text-muted);
+        }
+        .spec-item span:last-child {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .faq-item {
+            margin-bottom: 24px;
+        }
+        .faq-question {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .feature-bullets {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .feature-bullets li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            list-style-type: square;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background Particles -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="lg1.png" alt="IEB Logo" class="logo-img">
+                <span class="logo-text">IEB</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#products" class="nav-link">Products</a></li>
+                <li><a href="index.html#minecraft" class="nav-link">Minecraft</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Product Content Area -->
+    <div class="product-page">
+        <div class="product-hero">
+            <span class="product-badge">v6.4.0 &middot; Forge Mod</span>
+            <h1>IEB Client Mod</h1>
+            <p class="hero-subtitle" style="max-width:600px; margin:0 auto;">An advanced open-source utility client for Minecraft 1.8.9 Forge, offering performance boost, customization, and extensive mod modules.</p>
+        </div>
+
+        <!-- Ad Slot -->
+        <div class="ad-container ad-slot">
+            <span class="ad-label">ADVERTISEMENT</span>
+            <div class="ad-wrapper">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1775717168665969" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-main-card">
+                <h2>Product Overview</h2>
+                <p>IEB Client is a comprehensive gameplay enhancement mod developed under the Forge API. Tailored specifically for Minecraft 1.8.9, the mod brings performance tweaks, graphical HUD customization, scripting extensions, and over 160 gameplay modules to enhance your standard sandbox experience. We focus on lightweight operations, ensuring that your frames per second (FPS) stay high while maintaining extensive feature coverage.</p>
+                <p>Whether you want to build structures faster, tweak combat mechanics, optimize entity rendering, or write custom JavaScript macros to automate routine game tasks, IEB Client provides a unified in-game control hub to do it all.</p>
+
+                <h2>Key Features</h2>
+                <ul class="feature-bullets">
+                    <li><strong>160+ Core Modules:</strong> Categorized into Combat (AimAssist, Velocity tweaks), Movement (BHop, Fly helpers), Render (ESP, Radar, Chams), and World automation (Scaffold, Nuker).</li>
+                    <li><strong>Scripting Engine (Nashorn):</strong> Write custom modules in JavaScript. Change player behavior, HUD widgets, or logic macros in real-time. Features a built-in code editor and hot reloading.</li>
+                    <li><strong>Custom HUD Design:</strong> Arrange your screen layout with dragging mechanics. Displays FPS, keystrokes, connection ping, inventory slots, coordinates, and system time.</li>
+                    <li><strong>Performance Boosters:</strong> Custom render algorithms that reduce memory usage, block out unnecessary packet calculations, and improve chunk loading speeds.</li>
+                </ul>
+
+                <h2>How to Install & Launch</h2>
+                <p>Set up IEB Client in your Minecraft instance using these steps:</p>
+                <ul class="feature-bullets">
+                    <li>Ensure you have **Minecraft 1.8.9** installed with **Minecraft Forge (version 11.15.1.1722 or newer)**.</li>
+                    <li>Download the latest **IEB-Client-v6.4.0.jar** file from our official GitHub release download link.</li>
+                    <li>Open your computer's file explorer. Navigate to your Minecraft application directory (usually `%appdata%\.minecraft` on Windows or `~/Library/Application Support/minecraft` on macOS).</li>
+                    <li>Copy and paste the downloaded `.jar` file into the **mods** folder inside your minecraft directory.</li>
+                    <li>Start the Minecraft Launcher, select your Forge 1.8.9 profile, and click **Play**. In-game, press **Right-Shift** to toggle the client menu GUI!</li>
+                </ul>
+
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question">Q: Can I get banned on multiplayer servers for using IEB Client?</div>
+                    <div class="faq-answer">A: Yes. IEB Client includes automation and combat modules which are prohibited on competitive multiplayer servers. Always check the target server rules before connecting, and only use modules that are permitted. We are not responsible for account bans on third-party servers.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: Is IEB Client compatible with other mods like OptiFine?</div>
+                    <div class="faq-answer">A: Yes. IEB Client is designed to be fully compatible with OptiFine, NEI, and other standard 1.8.9 Forge mods. Simply place them together in the mods folder.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: Where can I find scripting documentation?</div>
+                    <div class="faq-answer">A: You can visit our dedicated client sub-site at **iebgames.github.io/ieb_client/docs/** where you can find detailed script guides, examples, and event APIs.</div>
+                </div>
+            </div>
+
+            <div class="product-sidebar-card">
+                <h3>Technical Specifications</h3>
+                <div class="spec-list">
+                    <div class="spec-item">
+                        <span>Game Version</span>
+                        <span>Minecraft 1.8.9</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>API Hook</span>
+                        <span>Minecraft Forge</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Macro Scripting</span>
+                        <span>JavaScript (Nashorn)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>File Size</span>
+                        <span>~12 MB</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Developer</span>
+                        <span>IEB Games Studio</span>
+                    </div>
+                </div>
+                <a href="https://iebgames.github.io/IEB-Client/" target="_blank" class="btn btn-primary" style="display:flex; justify-content:center; margin-top:20px;">Download Latest</a>
+                <a href="https://github.com/iebgames/IEB-Client" target="_blank" class="btn btn-secondary" style="display:flex; justify-content:center; margin-top:10px;">GitHub Repository</a>
+            </div>
+        </div>
+
+        <!-- Ad Slot -->
+        <div class="ad-container ad-slot" style="margin-top: 40px;">
+            <span class="ad-label">ADVERTISEMENT</span>
+            <div class="ad-wrapper">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1775717168665969" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 IEB. Made with ❤️ by two devs.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

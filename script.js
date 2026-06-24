@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounterAnimation();
     initBackToTop();
     initActiveNavLink();
-    initAdToggle();
+    initCookieConsent();
 });
 
 // ========================================
@@ -316,60 +316,53 @@ document.querySelectorAll('.product-card').forEach(card => {
 });
 
 // ========================================
-// Ad Toggle Switch
+// Cookie Consent Banner
 // ========================================
-function initAdToggle() {
-    const adSwitch = document.getElementById('ad-switch-input');
-    const adSlots = document.querySelectorAll('.ad-slot');
-    if (!adSwitch || !adSlots.length) return;
+function initCookieConsent() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept-all');
+    const rejectBtn = document.getElementById('cookie-reject-all');
+    if (!banner) return;
 
-    // Check localStorage for saved preference
-    const savedPref = localStorage.getItem('ieb-ads-enabled');
-    if (savedPref === 'true') {
-        adSwitch.checked = true;
-        showAds(adSlots);
+    // Check localStorage for saved consent
+    const consent = localStorage.getItem('ieb-cookie-consent');
+    if (!consent) {
+        // Show banner after a slight delay
+        setTimeout(() => {
+            banner.classList.remove('hidden');
+        }, 1000);
+    } else if (consent === 'accepted') {
+        loadAdSense();
     }
 
-    adSwitch.addEventListener('change', () => {
-        if (adSwitch.checked) {
-            showAds(adSlots);
-            localStorage.setItem('ieb-ads-enabled', 'true');
-        } else {
-            hideAds(adSlots);
-            localStorage.setItem('ieb-ads-enabled', 'false');
-        }
-    });
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('ieb-cookie-consent', 'accepted');
+            banner.classList.add('hidden');
+            loadAdSense();
+        });
+    }
+
+    if (rejectBtn) {
+        rejectBtn.addEventListener('click', () => {
+            localStorage.setItem('ieb-cookie-consent', 'rejected');
+            banner.classList.add('hidden');
+        });
+    }
 }
 
-function showAds(adSlots) {
-    adSlots.forEach((slot, index) => {
-        setTimeout(() => {
-            slot.style.display = 'block';
-            // Small delay for the CSS transition to work
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    slot.classList.add('ad-visible');
-                });
-            });
-            // Push adsbygoogle if available
-            try {
-                const insElement = slot.querySelector('.adsbygoogle');
-                if (insElement && !insElement.getAttribute('data-ad-loaded')) {
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    insElement.setAttribute('data-ad-loaded', 'true');
-                }
-            } catch (e) {
-                // AdSense not loaded or blocked
+function loadAdSense() {
+    // Automatically load adsbygoogle ads
+    const adSlots = document.querySelectorAll('.ad-slot');
+    adSlots.forEach(slot => {
+        try {
+            const insElement = slot.querySelector('.adsbygoogle');
+            if (insElement && !insElement.getAttribute('data-ad-loaded')) {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+                insElement.setAttribute('data-ad-loaded', 'true');
             }
-        }, index * 150);
-    });
-}
-
-function hideAds(adSlots) {
-    adSlots.forEach((slot) => {
-        slot.classList.remove('ad-visible');
-        setTimeout(() => {
-            slot.style.display = 'none';
-        }, 500); // Wait for fade-out transition
+        } catch (e) {
+            // AdSense script not loaded or blocked by extension
+        }
     });
 }

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEB-Chat - Secure Instant Messaging | IEB Games</title>
+    <meta name="description" content="Discover IEB-Chat, a modern, secure, and open-source instant messaging client featuring end-to-end encryption and fast peer connections.">
+    <link rel="icon" type="image/png" href="lg1.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-page {
+            padding: 140px 0 80px 0;
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        .product-hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .product-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+        .product-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.15);
+            color: #22d3ee;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 6px 14px;
+            border-radius: var(--radius-xl);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .product-main-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .product-sidebar-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            height: fit-content;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .product-main-card h2, .product-sidebar-card h3 {
+            color: var(--accent-yellow);
+            margin-top: 30px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .product-main-card h2:first-of-type {
+            margin-top: 0;
+        }
+        .product-main-card p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .spec-list {
+            margin-bottom: 20px;
+        }
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+        .spec-item span:first-child {
+            color: var(--text-muted);
+        }
+        .spec-item span:last-child {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .faq-item {
+            margin-bottom: 24px;
+        }
+        .faq-question {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .feature-bullets {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .feature-bullets li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            list-style-type: square;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background Particles -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="lg1.png" alt="IEB Logo" class="logo-img">
+                <span class="logo-text">IEB</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#products" class="nav-link">Products</a></li>
+                <li><a href="index.html#minecraft" class="nav-link">Minecraft</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Product Content Area -->
+    <div class="product-page">
+        <div class="product-hero">
+            <span class="product-badge">v1.5.2 &middot; Secure P2P</span>
+            <h1>IEB-Chat Messenger</h1>
+            <p class="hero-subtitle" style="max-width:600px; margin:0 auto;">A decentralized, end-to-end encrypted messaging application that gives you total ownership of your communications.</p>
+        </div>
+
+        <!-- Ad Slot -->
+        <div class="ad-container ad-slot">
+            <span class="ad-label">ADVERTISEMENT</span>
+            <div class="ad-wrapper">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1775717168665969" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-main-card">
+                <h2>Product Overview</h2>
+                <p>IEB-Chat is a modern chat application developed with privacy as its primary foundation. In an era where centralized messenger companies read metadata, analyze user chats, and lock accounts without warning, IEB-Chat proposes a different model. By leveraging peer-to-peer (P2P) connections and robust public-key cryptography, IEB-Chat connects users directly, removing intermediate corporation servers from the data transfer equation.</p>
+                <p>With an elegant and highly customizable glassmorphism user interface, the application is fast, visually pleasant, and runs seamlessly on multiple desktop platforms. You can communicate with colleagues, friends, or family with the confidence that no corporate entity is logging your online status, IP address history, or chat transcripts.</p>
+
+                <h2>Key Features</h2>
+                <ul class="feature-bullets">
+                    <li><strong>End-to-End Encryption (E2EE):</strong> All messages, file attachments, and images are encrypted locally using AES-GCM-256 before transmission. Only the recipient has the cryptographic keys to decrypt the messages.</li>
+                    <li><strong>Decentralized P2P Connections:</strong> Establish direct connections to your chat partners using WebRTC protocols. Signal servers are only utilized to initialize peer matching and never read your message payloads.</li>
+                    <li><strong>Zero Account Registration:</strong> No phone numbers, email addresses, or usernames are required. Generate a unique cryptographic peer ID to share with friends, and start talking immediately.</li>
+                    <li><strong>Secure File Transfer:</strong> Send documents, screenshots, and logs directly to peers without uploading them to cloud database drives. Files are streamed byte-by-byte between peers.</li>
+                </ul>
+
+                <h2>How to Connect</h2>
+                <p>Establishing a connection on IEB-Chat takes less than a minute:</p>
+                <ul class="feature-bullets">
+                    <li>Launch IEB-Chat. The application automatically generates your unique Peer ID key.</li>
+                    <li>Copy your Peer ID and send it to your friend through a secure channel.</li>
+                    <li>To initiate a chat, ask your friend for their Peer ID, paste it into the "Connect to Peer" bar, and click **Connect**.</li>
+                    <li>Once connected, a secure green connection dot will light up, and you can chat securely.</li>
+                </ul>
+
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question">Q: Does IEB-Chat store chat history on a database server?</div>
+                    <div class="faq-answer">A: No. All chats are saved locally on your computer in an encrypted database file. We do not maintain server storage for message archiving. If you delete the app data, the messages are lost permanently.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: Can I use IEB-Chat on my phone?</div>
+                    <div class="faq-answer">A: IEB-Chat is currently optimized as a desktop client for Windows, macOS, and Linux. Mobile app releases are planned in our roadmap. You can compile the web version to test in mobile web browsers.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: What happens if the peer is offline?</div>
+                    <div class="faq-answer">A: Because it is a P2P application, both users must be online to send and receive messages. If your friend is offline, the message will queue locally on your machine and send automatically when you both establish an active connection.</div>
+                </div>
+            </div>
+
+            <div class="product-sidebar-card">
+                <h3>Technical Specifications</h3>
+                <div class="spec-list">
+                    <div class="spec-item">
+                        <span>Platform</span>
+                        <span>Windows, macOS, Linux</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Protocol</span>
+                        <span>WebRTC & WebSockets</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Encryption</span>
+                        <span>AES-GCM & RSA-4096</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>File Size</span>
+                        <span>~52 MB</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Developer</span>
+                        <span>IEB Games Studio</span>
+                    </div>
+                </div>
+                <a href="https://iebgames.github.io/IEB-Chat/" target="_blank" class="btn btn-primary" style="display:flex; justify-content:center; margin-top:20px;">Download Latest</a>
+                <a href="https://github.com/iebgames" target="_blank" class="btn btn-secondary" style="display:flex; justify-content:center; margin-top:10px;">GitHub Repository</a>
+            </div>
+        </div>
+
+        <!-- Ad Slot -->
+        <div class="ad-container ad-slot" style="margin-top: 40px;">
+            <span class="ad-label">ADVERTISEMENT</span>
+            <div class="ad-wrapper">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1775717168665969" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 IEB. Made with ❤️ by two devs.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
